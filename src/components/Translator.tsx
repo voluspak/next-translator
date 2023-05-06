@@ -3,20 +3,31 @@
 import { useStore } from '@/hooks/useStore'
 
 const Translator = () => {
-  const { fromLanguage, setFromLanguage } = useStore()
+  const { fromLanguage, toLanguage, interchangeLanguages } = useStore()
 
   console.log({ fromLanguage })
 
   return (
-    <>
-      <button
-        onClick={() => setFromLanguage('es')}
-        className='border border-solid border-gray-400 rounded bg-cyan-300/50 px-3 py-1'
-      >
-        Cambiar a Español
-      </button>
-      <span>{fromLanguage}</span>
-    </>
+    <section className='flex justify-evenly w-4/5'>
+      <div className='flex flex-col'>
+        <h2>From</h2>
+        {fromLanguage}
+      </div>
+
+      <div className='flex flex-col'>
+        <button
+          onClick={interchangeLanguages}
+          className='border border-solid border-gray-800 text-white bg-zinc-800 py-1 px-3 rounded-full'
+        >
+          Intercambiar
+        </button>
+      </div>
+
+      <div className='flex flex-col'>
+        <h2>To</h2>
+        {toLanguage}
+      </div>
+    </section>
   )
 }
 
