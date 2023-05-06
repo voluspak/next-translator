@@ -1,10 +1,22 @@
-import { useReducer } from 'react'
-import { initialState, reducer } from '@/reducers/translationReducer'
+'use client'
+
+import { useStore } from '@/hooks/useStore'
 
 const Translator = () => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const { fromLanguage, setFromLanguage } = useStore()
+
+  console.log({ fromLanguage })
+
   return (
-    <div>Translator</div>
+    <>
+      <button
+        onClick={() => setFromLanguage('es')}
+        className='border border-solid border-gray-400 rounded bg-cyan-300/50 px-3 py-1'
+      >
+        Cambiar a Español
+      </button>
+      <span>{fromLanguage}</span>
+    </>
   )
 }
 
