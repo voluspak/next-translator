@@ -6,14 +6,19 @@ import { ChangeIcon } from './Icons'
 import LanguageSelector from './LanguageSelector'
 
 const Translator = () => {
-  const { fromLanguage, toLanguage, interchangeLanguages } = useStore()
+  const { fromLanguage, toLanguage, interchangeLanguages, setFromLanguage, setToLanguage } = useStore()
 
   console.log({ fromLanguage })
 
   return (
     <section className='flex justify-evenly w-4/5'>
       <div className='flex flex-col'>
-        <LanguageSelector />
+        <LanguageSelector
+          onChange={setFromLanguage}
+          type='from'
+          value={fromLanguage}
+        />
+        {fromLanguage}
       </div>
 
       <div className='flex flex-col'>
@@ -27,7 +32,12 @@ const Translator = () => {
       </div>
 
       <div className='flex flex-col'>
-        <LanguageSelector />
+        <LanguageSelector
+          onChange={setToLanguage}
+          type='to'
+          value={toLanguage}
+        />
+        {toLanguage}
       </div>
     </section>
   )
